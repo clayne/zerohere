@@ -1,0 +1,44 @@
+#
+# Build ignores
+#
+#.*
+*.o
+*.o.*
+*.a
+*.so
+*.so.*
+*.1.gz
+
+#
+# Never ignore these
+#
+!.gitignore
+
+#
+# Normal output and testing dirs
+#
+/build_date.h
+/zerohere
+/zerohere.exe
+
+#
+# Backups / patches
+#
+*~
+*.orig
+*.rej
+/*.patch
+
+#
+# debugging and editor stuff
+#
+core
+.gdb_history
+.gdbinit
+.*.swp
+*.gcda
+*.gcno
+*.gcov
+
+# Mac OS
+.DS_Store

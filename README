@@ -1,0 +1,21 @@
+                    zerohere, a free space zeroing tool
+                   by Jody Bruchon <jody@jodybruchon.com>
+                     Distributed under The MIT License
+
+This tool does only one thing: makes a new file wherever it's run, floods it
+with zero bytes, and deletes it on the first write failure. The purpose of
+this tool is to zero out all of the free space on a filesystem, specifically
+to work around the absence of TRIM support, since zero-filling all free space
+will tell almost any eMMC/SSD controller chip that the space is no longer in
+use, or at least that it can all be compressed into a single memory page.
+
+There is a very good chance that this program will never be updated...because
+why bother? It's the simplest thing in the world. Regardless, if you happen to
+find bugs or make improvements, I'll gladly accept them.
+
+https://github.com/jbruchon/zerohere/
+
+If this tool helps you, check out my support and sponsorship options on my
+website, including Ko-Fi, Flattr, PayPal, and SubscribeStar:
+
+https://www.jodybruchon.com/
