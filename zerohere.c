@@ -18,18 +18,19 @@
 #endif
 
 static const char filename[] = "__zero_here_file__";
+static FILE *fp;
 
 void sighandler(const int signum)
 {
 	(void)signum;
-	unlink(filename);
-	fprintf(stderr, "Aborted. Zero file deleted. Are you happy now?\n");
+	if (fp) fclose(fp);
+	remove(filename);
+	printf("Aborted. Zero file deleted. Are you happy now?\n");
 	exit(EXIT_FAILURE);
 }
 
 int main(void)
 {
-	static FILE *fp;
 	static char fill[CHUNK_SIZE];
 
 	signal(SIGINT, sighandler);
@@ -42,10 +43,10 @@ int main(void)
 	printf("\nFile name is: '%s'\n\n", filename);
 	while (fwrite(fill, CHUNK_SIZE, 1, fp) == 1) continue;
 	fclose(fp);
-	unlink(filename);
+	remove(filename);
 	printf("Zero file completed and erased. Have an empty day!\n");
 	exit(EXIT_SUCCESS);
 error_open:
-	fprintf(stderr, "Could not open file for writing\n");
+	printf("Could not open file '%s' for writing\n", filename);
 	exit(EXIT_FAILURE);
 }
