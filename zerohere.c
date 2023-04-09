@@ -34,7 +34,7 @@ int main(void)
 	static char fill[CHUNK_SIZE];
 
 	signal(SIGINT, sighandler);
-  
+
 	memset(fill, 0, CHUNK_SIZE);
 	fp = fopen(filename, WRITE_STRING);
 	if (!fp) goto error_open;
